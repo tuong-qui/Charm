@@ -205,14 +205,9 @@ if __name__ == '__main__':
     minCon = 3
     closed = charm.charm(transaction_dict, minSup, total_trans)
     rules = AR.AssRules(closed, minSup, minCon, transaction_dict)
-    print(rules)
+    
 
-    print("\n=== Association Rules ===")
-    for rule, info in rules.items():
-        transactions_list, supp, conf, lift = info
-        print(f"{rule} | Support: {supp*100:.2f}% | Confidence: {conf*100:.2f}% | Lift: {lift:.2f}")    
-
-    import pandas as pd
+    print("\n=== Association Rules ===")  
 
     # rule là dict đã có sẵn từ AssRules
     ruleDf = pd.DataFrame([
@@ -231,5 +226,18 @@ if __name__ == '__main__':
 
     # AR = AssociationRules()
     # ori = {'A': ['1', '3', '4', '5'], 'D': ['2', '4', '5', '6'], 'T': ['1', '3', '5', '6'], 'W': ['1', '2', '3', '4', '5'], 'C': ['1', '2', '3', '4', '5', '6']}
-    # closed = {'A, C, T, W': 60.0, 'A, C, W': 80.0, 'C, D, W': 60.0, 'C, D': 80.0, 'C, T': 80.0, 'C, W': 100.0, 'C': 100.0}
+    # closed = {'A, T, W': 50.0, 'C, D, W': 50.0, 'C, D': 66.6667, 'C, T': 66.6667, 'C, W': 83.3333, 'C': 100.0}
     # rule = AR.AssRules(closed, 50, 80, ori)
+    # import pandas as pd
+    # ruleDf = pd.DataFrame([
+    #     {
+    #         "antecedents": k.split("-->")[0].strip()[1:-1].split(", "),   # tách vế trái
+    #         "consequents": k.split("-->")[1].strip()[1:-1].split(", "),   # tách vế phải
+    #         "support": v[1],       # giá trị support
+    #         "confidence": v[2],    # giá trị confidence
+    #         "lift": v[3]           # giá trị lift
+    #     }
+    #     for k, v in rule.items()
+    # ])
+
+    # print(ruleDf)

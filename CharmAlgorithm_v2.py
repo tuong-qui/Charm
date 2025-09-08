@@ -137,10 +137,8 @@ if __name__ == '__main__':
                 transaction_dict[item] = []
             transaction_dict[item].append(transaction_id)
 
-    #print(transaction_dict)
-
-    minSup = 5
-    closed_items = charm.charm(transaction_dict, minSup, total_trans)
+    min_sup = 5
+    closed_items = charm.charm(transaction_dict, min_sup, total_trans)
     closed_items_df = pd.DataFrame()
     closed_items_df['itemset'] = closed_items.keys()
     closed_items_df['support'] = closed_items.values()
